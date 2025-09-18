@@ -22,6 +22,7 @@ def main() -> int:
 
         service_page = ServicePage(driver)
         service_page.set_service(settings.service_code)
+        service_page.accept_terms()
 
         return 0
     finally:
