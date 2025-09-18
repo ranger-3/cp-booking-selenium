@@ -17,8 +17,22 @@ class ServicePage(BasePage):
             button = self.wait.until(EC.element_to_be_clickable(locator))
             button.click()
         except TimeoutException:
-            raise TimeoutException(f"Could not find train {service_code}")
+            raise TimeoutException(f"Could not find service {service_code}")
 
     def accept_terms(self) -> None:
-        checkbox = self.wait.until(EC.element_to_be_clickable(service.TERMS_CHECKBOX))
-        checkbox.click()
+        try:
+            checkbox = self.wait.until(
+                EC.element_to_be_clickable(service.TERMS_CHECKBOX)
+            )
+            checkbox.click()
+        except TimeoutException:
+            raise TimeoutException("Could not find or click Terms checkbox")
+
+    def proceed(self) -> None:
+        try:
+            button = self.wait.until(
+                EC.element_to_be_clickable(service.CONTINUE_BUTTON)
+            )
+            button.click()
+        except TimeoutException:
+            raise TimeoutException("Could not find or click Continue button")
