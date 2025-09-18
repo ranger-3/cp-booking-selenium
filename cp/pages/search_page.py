@@ -12,20 +12,17 @@ from cp.pages.base_page import BasePage
 class SearchPage(BasePage):
     URL = settings.search_page_url
 
-    def open(self):
+    def open(self) -> None:
         self.driver.get(self.URL)
-        return self
 
-    def accept_cookies(self):
+    def accept_cookies(self) -> None:
         try:
             button = self.wait.until(EC.element_to_be_clickable(search.ACCEPT_COOKIES))
             button.click()
         except TimeoutException:
             pass
 
-        return self
-
-    def set_travel_class(self, travel_class: str):
+    def set_travel_class(self, travel_class: str) -> None:
         travel_class = travel_class.lower()
 
         if travel_class == "comfort":
@@ -45,9 +42,7 @@ class SearchPage(BasePage):
                 f"Travel class button not found or not clickable: {travel_class!r}"
             )
 
-        return self
-
-    def set_route(self, from_station: str, to_station: str):
+    def set_route(self, from_station: str, to_station: str) -> None:
         if from_station == to_station:
             raise ValueError(
                 f"Departure and arrival stations cannot be the same: {from_station!r}"
@@ -75,9 +70,7 @@ class SearchPage(BasePage):
                 f"Arrival station {to_station!r} not recognized by CP site"
             )
 
-        return self
-
-    def set_date(self, date: str):
+    def set_date(self, date: str) -> None:
         parsed_date = datetime.strptime(date, "%d-%m-%Y")
         formatted_date = parsed_date.strftime("%d %B, %Y")
 
@@ -96,9 +89,7 @@ class SearchPage(BasePage):
                 f"Departure date {formatted_date!r} not accepted by CP site"
             )
 
-        return self
-
-    def set_passengers(self, total: int):
+    def set_passengers(self, total: int) -> None:
         if not (1 <= total <= 9):
             raise ValueError(f"Passengers must be in 1..9, got {total!r}")
 
@@ -125,13 +116,10 @@ class SearchPage(BasePage):
                 f"Passenger option {total} not found or not clickable"
             )
 
-        return self
-
-    def submit(self):
+    def submit(self) -> None:
         try:
             button = self.wait.until(EC.element_to_be_clickable(search.SUBMIT_BUTTON))
         except TimeoutException:
             raise ValueError("Form is invalid, submit button never became clickable")
 
         button.click()
-        return self
