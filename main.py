@@ -1,7 +1,7 @@
 import sys
 
-from cp.core.driver import create_driver
 from cp.core.config import settings
+from cp.core.driver import create_driver
 from cp.pages.search_page import SearchPage
 from cp.pages.service_page import ServicePage
 
@@ -23,6 +23,7 @@ def main() -> int:
         service_page = ServicePage(driver)
         service_page.set_service(settings.service_code)
         service_page.accept_terms()
+        service_page.proceed()
 
         return 0
     finally:
