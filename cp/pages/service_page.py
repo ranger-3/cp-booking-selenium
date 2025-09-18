@@ -7,7 +7,7 @@ from cp.pages.base_page import BasePage
 
 
 class ServicePage(BasePage):
-    def set_service(self, service_code: str):
+    def set_service(self, service_code: str) -> None:
         locator = (
             By.XPATH,
             f"//span[@class='nobr' and normalize-space(text())='{service_code}']",
@@ -19,10 +19,6 @@ class ServicePage(BasePage):
         except TimeoutException:
             raise TimeoutException(f"Could not find train {service_code}")
 
-        return self
-
-    def accept_terms(self):
+    def accept_terms(self) -> None:
         checkbox = self.wait.until(EC.element_to_be_clickable(service.TERMS_CHECKBOX))
         checkbox.click()
-
-        return self
