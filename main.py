@@ -2,6 +2,7 @@ import sys
 
 from cp.core.config import settings
 from cp.core.driver import create_driver
+from cp.pages.login_page import LoginPage
 from cp.pages.search_page import SearchPage
 from cp.pages.service_page import ServicePage
 
@@ -24,6 +25,9 @@ def main() -> int:
         service_page.set_service(settings.service_code)
         service_page.accept_terms()
         service_page.proceed()
+
+        login_page = LoginPage(driver)
+        login_page.login(settings.email, settings.password.get_secret_value())
 
         return 0
     finally:

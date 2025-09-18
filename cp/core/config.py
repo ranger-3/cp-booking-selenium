@@ -1,4 +1,4 @@
-from pydantic import HttpUrl, field_validator
+from pydantic import EmailStr, HttpUrl, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -7,6 +7,9 @@ class Settings(BaseSettings):
 
     headless: bool = True
     window_size: str = "1280,900"
+
+    email: EmailStr
+    password: SecretStr
 
     date: str
     from_station: str
