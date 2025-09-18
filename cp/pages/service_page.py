@@ -2,6 +2,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
+from cp.locators import service
 from cp.pages.base_page import BasePage
 
 
@@ -17,5 +18,11 @@ class ServicePage(BasePage):
             button.click()
         except TimeoutException:
             raise TimeoutException(f"Could not find train {service_code}")
+
+        return self
+
+    def accept_terms(self):
+        checkbox = self.wait.until(EC.element_to_be_clickable(service.TERMS_CHECKBOX))
+        checkbox.click()
 
         return self
