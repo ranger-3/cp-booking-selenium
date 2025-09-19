@@ -39,13 +39,13 @@ class Settings(SettingsModel):
 
     model_config = SettingsConfig(env_file=".env", config_file="trip.json")
 
-    @classmethod
     @field_validator("search_page_url", mode="after")
+    @classmethod
     def convert_url_to_str(cls, value: HttpUrl) -> str:
         return str(value)
 
-    @classmethod
     @field_validator("date", mode="before")
+    @classmethod
     def validate_date_format(cls, value: str) -> str:
         try:
             datetime.strptime(value, "%d-%m-%Y")
