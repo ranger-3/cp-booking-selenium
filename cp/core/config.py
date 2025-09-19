@@ -2,6 +2,11 @@ from pydantic import BaseModel, EmailStr, HttpUrl, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+class SeatSpec(BaseModel):
+    carriage: int
+    seat: int
+
+
 class Passenger(BaseModel):
     name: str
     document_type: str
@@ -26,6 +31,7 @@ class Settings(BaseSettings):
     passengers: int
 
     passengers_data: list[Passenger]
+    seats_spec: list[SeatSpec]
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
