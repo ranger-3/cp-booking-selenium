@@ -119,7 +119,9 @@ class OptionsPage(BasePage):
         for index, passenger in enumerate(passengers):
             self.set_name(index, passenger.name)
             self.set_document_type(index, passenger.document_type)
-            self.set_document_number(index, passenger.document_number)
+            self.set_document_number(
+                index, passenger.document_number.get_secret_value()
+            )
             self.set_discount_type(index, passenger.discount_type)
 
         self.proceed()

@@ -1,0 +1,41 @@
+{
+  "date": "19-09-2025",
+  "from_station": "City A",
+  "to_station": "City B",
+  "service_code": "IC 123",
+  "travel_class": "tourist",
+  "passengers": [
+    {
+      "name": "John Doe",
+      "document_type": "ID",
+      "document_number": "ID123456",
+      "discount_type": "FULL_PRICE",
+      "carriage": 1,
+      "seat": 1
+    },
+    {
+      "name": "Jane Roe",
+      "document_type": "PASSPORT",
+      "document_number": "P987654",
+      "discount_type": "FULL_PRICE",
+      "carriage": 1,
+      "seat": 2
+    },
+    {
+      "name": "Alice Smith",
+      "document_type": "ID",
+      "document_number": "ID556677",
+      "discount_type": "CHILDREN",
+      "carriage": 1,
+      "seat": 3
+    },
+    {
+      "name": "Bob Johnson",
+      "document_type": "CITIZEN_CARD",
+      "document_number": "CC112333",
+      "discount_type": "CHILDREN",
+      "carriage": 1,
+      "seat": 4
+    }
+  ]
+}

@@ -16,7 +16,7 @@ def main() -> int:
         search_page.open()
         search_page.accept_cookies()
 
-        search_page.set_passengers(settings.passengers)
+        search_page.set_passengers(settings.total_passengers)
         search_page.set_travel_class(settings.travel_class)
         search_page.set_date(settings.date)
         search_page.set_route(settings.from_station, settings.to_station)
@@ -29,10 +29,10 @@ def main() -> int:
 
         options_page = OptionsPage(driver)
         options_page.login(settings.email, settings.password.get_secret_value())
-        options_page.fill_passengers(settings.passengers_data)
+        options_page.fill_passengers(settings.passengers)
 
         seats_page = SeatsPage(driver)
-        seats_page.set_seats(settings.seats_spec)
+        seats_page.set_seats(settings.passengers)
         seats_page.proceed()
 
         return 0

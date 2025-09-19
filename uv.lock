@@ -73,6 +73,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "pydantic", extra = ["email"] },
+    { name = "pydantic-config" },
     { name = "pydantic-settings" },
     { name = "selenium" },
 ]
@@ -87,6 +88,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "pydantic", extras = ["email"], specifier = ">=2.11.9" },
+    { name = "pydantic-config", specifier = ">=0.3.0" },
     { name = "pydantic-settings", specifier = ">=2.10.1" },
     { name = "selenium", specifier = ">=4.35.0" },
 ]
@@ -277,6 +279,18 @@ wheels = [
 [package.optional-dependencies]
 email = [
     { name = "email-validator" },
+]
+
+[[package]]
+name = "pydantic-config"
+version = "0.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pydantic-settings" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/12/ff/1f38c845927142946d4c7b4a886b9ff3d7fde28e1d4d2c30dd624cd48e8a/pydantic-config-0.3.0.tar.gz", hash = "sha256:6b59e4d2f2072d0e6a443fe3dbbb012bba04e972e5176a617540e33d0b1ff39c", size = 8147, upload-time = "2023-12-06T15:57:45.512Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/72/1e/104e05a072cc80149c95d127606f88bcb4114e2238be12511d2499e69bd3/pydantic_config-0.3.0-py3-none-any.whl", hash = "sha256:572b737a527a372374e901169c6ac06d2f2766fca6ab12efaaf7046d1c504205", size = 6742, upload-time = "2023-12-06T15:57:44.096Z" },
 ]
 
 [[package]]
