@@ -28,6 +28,7 @@ def main() -> int:
 
         options_page = OptionsPage(driver)
         options_page.login(settings.email, settings.password.get_secret_value())
+        options_page.fill_passengers(settings.passengers_data)
 
         return 0
     finally:
