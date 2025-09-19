@@ -17,3 +17,11 @@ dev = [
     "pre-commit>=4.3.0",
     "pytest>=8.4.2",
 ]
+
+[tool.ruff.lint]
+select = [
+    "F",    # Pyflakes
+    "I",    # isort
+    "S",    # bandit
+    "UP",   # pyupgrade
+]

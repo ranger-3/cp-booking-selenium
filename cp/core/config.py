@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import (
     BaseModel,
     EmailStr,
@@ -6,8 +8,7 @@ from pydantic import (
     field_validator,
     model_validator,
 )
-from pydantic_config import SettingsModel, SettingsConfig
-from datetime import datetime
+from pydantic_config import SettingsConfig, SettingsModel
 
 
 class Passenger(BaseModel):

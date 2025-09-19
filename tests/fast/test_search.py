@@ -1,5 +1,4 @@
 import pytest
-
 from selenium.common.exceptions import TimeoutException
 
 
