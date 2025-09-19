@@ -43,11 +43,6 @@ class SearchPage(BasePage):
             )
 
     def set_route(self, from_station: str, to_station: str) -> None:
-        if from_station == to_station:
-            raise ValueError(
-                f"Departure and arrival stations cannot be the same: {from_station!r}"
-            )
-
         from_input = self.wait.until(EC.element_to_be_clickable(search.FROM_INPUT))
         from_input.clear()
         from_input.send_keys(from_station)
